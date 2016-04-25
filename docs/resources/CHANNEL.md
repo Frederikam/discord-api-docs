@@ -76,28 +76,6 @@ DM Channels represent a one-to-one conversation between two users, outside of th
 }
 ```
 
-### Read States
-
-Read states represent the tracking of what messages and mentions have been read.
-
-###### Read State Structure
-
-| Field | Type | Description |
-|-------|------|-------------|
-| id | snowflake | channel id |
-| mention_count | integer | number of unread mentions in this channel |
-| last_message_id | snowflake | last message read in this channel |
-
-###### Example Read State
-
-```json
-{
-	"id": "78703938047582208",
-	"mention_count": 5,
-	"last_message_id": "72465239836196864"
-}
-```
-
 ### Messages Object
 
 Represents a message sent in a channel within Discord.
@@ -268,10 +246,6 @@ Edit a previously sent message. Returns a [message](#DOCS_CHANNEL/message-object
 ## Delete Message % DELETE /channels/{channel.id#DOCS_CHANNEL/channel-objects}/messages/{message.id#DOCS_CHANNEL/message-object}
 
 Delete a message. If operating on a guild channel and trying to delete a message that was not sent by the current user, this endpoint requires the 'MANAGE_MESSAGES' permission. Returns a [message](#DOCS_CHANNEL/message-object) object. Fires a [Message Delete](#DOCS_GATEWAY/message-delete) Gateway event.
-
-## Ack Message % POST /channels/{channel.id#DOCS_CHANNEL/channel-objects}/messages/{message.id#DOCS_CHANNEL/message-object}/ack
-
-Ack a message. Generally bots should **not** implement this route.
 
 ## Edit Channel Permissions % PUT /channels/{channel.id#DOCS_CHANNEL/guild-channel-object}/permissions/{overwrite.id}
 
